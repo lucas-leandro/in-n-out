@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email"
-                    class="form-control" placeholder="Informe o E-mail" autofocus>
+                    class="form-control" placeholder="Informe o E-mail" value="<?=$email?>"autofocus>
                 </div>
 
                 <div class="form-group">
@@ -44,5 +44,6 @@
             </div>
         </div>
     </form>
+    
 </body>
 </html>
