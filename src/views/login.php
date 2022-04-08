@@ -25,7 +25,7 @@
             </div>
 
             <div class="card-body">
-
+                    <?php include(TEMPLATE_PATH.'/messages.php')?>
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email"
