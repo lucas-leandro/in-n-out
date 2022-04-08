@@ -11,7 +11,7 @@
     <title>In N' Out</title>
     
 </head>
-<body >
+<body>
     <header class="header">
         <div class="logo">
             <i class="icofont-travelling mr-2"></i>
@@ -20,7 +20,7 @@
             <span class="font-weight-light">Out</span>
             <i class="icofont-runner-alt-1 ml-2"></i>
         </div>
-        <div class="menu-toogle mx-3">
+        <div class="menu-toggle mx-3">
             <i class="icofont-navigation-menu"></i>
         </div>
         <div class="spacer"></div>

@@ -38,7 +38,7 @@ header.header .logo{
     height: 64px;
 }
 
-header.header .menu-toogle{
+header.header .menu-toggle{
     color: white;
     cursor: pointer;
 }
@@ -93,7 +93,6 @@ header.header .dropdown-content a:hover{
 header.header .dropdown:hover{
     background-color: rgba(0,0,0, .05);
 }
-
 aside.sidebar {
     display: flex;
     flex-direction: column;
@@ -133,5 +132,12 @@ main.content{
     grid-area: content;
 }
 footer.footer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+    font-size: 1.2rem;
     grid-area: footer;
+    background-color: #222;
+    color: #FFF;
 }
