@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="card-footer d-flex justify-content-center">
-            <a href="??" class="btn btn-success btn-lg">
+            <a href="innout.php" class="btn btn-success btn-lg">
                 <i class="icofont-check mr1"></i>
                 Bater o ponto
             </a>
