@@ -11,7 +11,7 @@ print_r($r1);
 echo "<br>";
 print_r($r2);
 echo "<br>";
-print_r(convertIntervalToDate($r2));
+print_r(getDateFromInterval($r2));
 echo "<br>";
-print_r(convertIntervalToDate($r1));
+print_r(getDateFromInterval($r1));
 
