@@ -38,3 +38,7 @@ function subtractIntervals($interval1, $interval2){
 
     return (new DateTime('00:00:00'))->diff($date);
 }
+
+function convertIntervalToDate($interval){
+    return new DateTimeImmutable($interval->format('%H:%i:%s'));
+}
