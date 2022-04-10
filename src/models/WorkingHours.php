@@ -45,4 +45,20 @@ class WorkingHours extends Model{
             $this->insert();
         }
     }
+
+    function getTime(){
+        $times = [];
+
+        if($this->time1){
+            array_push($times, getDateFromString($this->time1));
+        }else{
+            arraypush($times, NULL);
+        }
+
+        $this->time2 ?  array_push($times, getDateFromString($this->time2)) : arraypush($times, NULL);
+        $this->time3 ?  array_push($times, getDateFromString($this->time3)) : arraypush($times, NULL);
+        $this->time4 ?  array_push($times, getDateFromString($this->time4)) : arraypush($times, NULL);
+
+        return $times;
+    }
 }
