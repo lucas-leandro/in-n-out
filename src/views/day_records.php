@@ -30,4 +30,10 @@
             </a>
         </div>
     </div>
+    <form action="innout.php" method="post">
+        <input type="text" name ="forcedTime">
+        <button>
+            Simular ponto
+        </button>
+    </form>
 </main>
