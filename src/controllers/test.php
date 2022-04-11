@@ -1,9 +1,8 @@
 <?php
 
 //Controller temporario
-
 loadModel('WorkingHours');
 
 $wh = WorkingHours::loadFromUserAndDate(1,date('Y-m-d'));
-
-print_r($wh);
+$workedIntervalString  = $wh->getWorkedInterval()->format('%H:%I:%S');
+print_r($workedIntervalString);
