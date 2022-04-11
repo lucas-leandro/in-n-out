@@ -10,3 +10,7 @@ print_r($workedIntervalString);
 echo "<br>";
 $lunchIntervalString  = $wh->getLunchInterval()->format('%H:%I:%S');
 print_r($lunchIntervalString);
+
+echo "<br>";
+
+print_r($wh->getExitTimes());
