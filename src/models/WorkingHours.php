@@ -15,13 +15,15 @@ class WorkingHours extends Model{
 
     public static function loadFromUserAndDate($userId, $workDate){
         $registry = self::getOne(['user_id' => $userId, 'work_date' => $workDate]);
-        if(!$registry){
+
+        if(!$registry) {
             $registry = new WorkingHours([
                 'user_id' => $userId,
                 'work_date' => $workDate,
                 'worked_time' => 0
             ]);
         }
+
         return $registry;
     }
 
@@ -32,7 +34,16 @@ class WorkingHours extends Model{
         if(!$this->time4) return 'time4';
         return null;
     }
-
+    public function getActiveClock(){
+        $nextTime =$this->getNextTime();
+        if($nextTime === 'time1' || $nextTime === 'time3'){
+            return 'exitTime';
+        }elseif($nextTime === 'time2' || $nextTime === 'time4'){
+            return 'workedInterval';
+        }else{
+            return NULL;
+        }
+    }
     public function innout($time) {
         $timeColumn = $this->getNextTime();
         if(!$timeColumn) {
@@ -70,10 +81,8 @@ class WorkingHours extends Model{
         return $breakInterval;
 
     }
-    
-    function getExitTimes(){
-        [$t1, , , $t4] = $this->getTimes();
-        // $workday= new DateInterval('PT8H');
+    function getExitTime(){
+        [$t1,,, $t4] = $this->getTimes();
         $workday = DateInterval::createFromDateString('8 hours');
 
         if(!$t1) {
@@ -84,8 +93,8 @@ class WorkingHours extends Model{
             $total = sumIntervals($workday, $this->getLunchInterval());
             return $t1->add($total);
         }
-        
     }
+
 
     private function getTimes() {
         $times = [];
