@@ -2,14 +2,14 @@
     <nav class="menu mt-3">
         <ul class="nav-list">
             <li class="nav-item">
-                <a href="day_recods.php">
+                <a href="day_records.php">
                     <i class="icofont-ui-check mr-2">
                         Registrar pronto
                     </i>
                 </a>
             </li>
             <li class="nav-item">
-                <a href=".php">
+                <a href="monthly_report.php">
                     <i class="icofont-ui-calendar mr-2">
                         Relatorio Mensal
                     </i>

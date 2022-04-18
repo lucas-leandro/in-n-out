@@ -45,4 +45,10 @@ function getDateFromInterval($interval){
 
 function getDateFromString($str){
     return DateTimeImmutable::createFromFormat('H:i:s', $str);
-}   
+}
+
+function getLastDayofMonth($date){
+    $time = getDateAsDateTime($date)->getTimesTamp();
+
+    return date('Y-m-t', $time);
+}
