@@ -57,3 +57,8 @@ function getLastDayOfMonth($date){
 
     return new DateTime(date('Y-m-t', $time));
 }
+function getSecondsFromDateInterval($interval){
+    $d1 = new dateTimeImmutable;
+    $d2 = $d1->add($interval);
+    return $d2->getTimestamp() - $d1->getTimestamp();
+}
