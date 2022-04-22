@@ -1,4 +1,3 @@
 <?php
-
-//Controller temporario
-
+session_start();
+requireValidSession(); 

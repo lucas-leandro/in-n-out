@@ -76,14 +76,18 @@ class Model{
         Database::executeSQL($sql);
     }
     
-    private static function getFilters($filters){
+    private static function getFilters($filters) {
         $sql = '';
-        if(count($filters)> 0){
-            $sql .= " WHERE 1 = 1 ";
-            foreach($filters as $columns => $value){
-                $sql .= " AND ${columns} = ". static::getFormatedValue($value);
+        if(count($filters) > 0) {
+            $sql .= " WHERE 1 = 1";
+            foreach($filters as $column => $value) {
+                if($column == 'raw') {
+                    $sql .= " AND {$value} ";
+                } else {
+                    $sql .= " AND ${column} = " . static::getFormatedValue($value);
+                }
             }
-        }
+        } 
         return $sql;
     }
 
