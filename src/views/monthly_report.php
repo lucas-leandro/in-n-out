@@ -9,14 +9,31 @@
 ?>
 
     <div>
-        <form class="mb-4" action="#" methor="post">
-            <select name="period" id="period" class="form-control ml-1" placeholder="Selecione o período...">
-                <?php
-                    foreach($periods as $key => $month){
-                        echo "<option value= '{$key}>'>{$month} </option>";
-                    }
-                ?>
-            </select>
+        <form class="mb-4" action="#" method="post">
+            <div class="input-group">
+                <?php if($user->is_admin):?>
+                <select name="user" id="user" class="form-control mr-2" placeholder="Selecione o usuario...">
+                    <option value="">Selecione o Usuario</option>
+                    <?php
+                        foreach($users as $user){
+                            $selected = $user->id === $selectedUserId ? "Selected" : '';
+                            echo "<option value= '{$user->id}' {$selected} >{$user->name} </option>";
+                        }
+                        ?>
+                </select>
+                <?php endif?>
+                <select name="period" id="period" class="form-control " placeholder="Selecione o período...">
+                    <?php
+                        foreach($periods as $key => $month){
+                            $selected = $key === $selectedPeriod ? "Selected" : '';
+                            echo "<option value= '{$key}' {$selected} >{$month} </option>";
+                        }
+                    ?>
+                </select>
+                <button class="btn btn-primary ml-2">
+                    <i class="icofont-search"></i>
+                </button>
+            </div>
         </form>
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -30,7 +47,7 @@
             <tbody>
                 <?php  foreach($report as $registry){?>
                     <tr>
-                        <td><?= formatDateWithLocale($registry->work_date, '%A, de $B de %Y')?></td>
+                        <td><?= formatDateWithLocale($registry->work_date, '%A, de %B de %Y')?></td>
                         <td><?= $registry->time1?></td>
                         <td><?= $registry->time2?></td>
                         <td><?= $registry->time3?></td>
