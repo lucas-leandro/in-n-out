@@ -97,10 +97,10 @@ class WorkingHours extends Model{
     }
     function getBalance(){
         if(!$this->time1 && !isPastWorkDay($this->work_date)) {
-            return '';
+            return '-';
         }
         if($this->worked_time == DAILY_TIME) {
-            return '-';
+            return '8 Horas';
         }
         $balance = $this->worked_time - DAILY_TIME;
         $balanceString = getTimeStringFromSeconds(abs($balance));
