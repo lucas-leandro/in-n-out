@@ -131,6 +131,17 @@ class WorkingHours extends Model{
         return $absentUsers;
     }
 
+    public static function getWorkedTimeInMonth($yearAndMonth){
+        $startDate = new dateTime("{$yearAndMonth}-1")->format('Y-m-d');
+        $endDate = getLastDayOfMonth("{$yearAndMonth}-1")->format('Y-m-d');
+
+        $result = static::GetResultSetFromSelect([
+            'raw' => "work_date BETWEEN '$startDate' AND {$endDate}"
+        ], "sum(worked_time) as sum");
+
+        return $result->fetch_assoc()['sum'];
+    }
+
     public static function getMonthlyReport($userId, $date) {
         $registries = [];
         $startDate = getFirstDayOfMonth($date)->format('Y-m-d');
@@ -138,7 +149,7 @@ class WorkingHours extends Model{
 
         $result = static::getResultSetFromSelect([
             'user_id' => $userId,
-            'raw' => "work_date between '{$startDate}' AND '{$endDate}'"
+            'raw' => "work_date BETWEEN '{$startDate}' AND '{$endDate}'"
         ]);
 
         if($result) {
