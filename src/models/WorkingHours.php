@@ -108,35 +108,34 @@ class WorkingHours extends Model{
         return "{$sign}{$balanceString}";
     }
 
-    public static function getAbsentUsers(){
-        $today = new DateTime()
+    public static function getAbsentUsers() {
+        $today = new DateTime();
         $result = Database::getResultFromQuery("
-            SELECT 
-                name 
-            FROM users
-            WHERE 
-                end_date is NULL
+            SELECT name FROM users
+            WHERE end_date is NULL
             AND id NOT IN (
                 SELECT user_id FROM working_hours
-                WHERE wor_date = '{$today->format('Y-m-d')}'
-                and time1 IS NOT NULL
+                WHERE work_date = '{$today->format('Y-m-d')}'
+                AND time1 IS NOT NULL
             )
         ");
+
         $absentUsers = [];
-        if ($result ->num_rows >0){
-            while($row = $result->fetch_assoc()){
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
                 array_push($absentUsers, $row['name']);
             }
         }
+
         return $absentUsers;
     }
 
     public static function getWorkedTimeInMonth($yearAndMonth){
-        $startDate = new dateTime("{$yearAndMonth}-1")->format('Y-m-d');
-        $endDate = getLastDayOfMonth("{$yearAndMonth}-1")->format('Y-m-d');
+        $startDate = (new DateTime("{$yearAndMonth}-1"))->format('Y-m-d');
+        $endDate = getLastDayOfMonth($yearAndMonth)->format('Y-m-d');
 
         $result = static::GetResultSetFromSelect([
-            'raw' => "work_date BETWEEN '$startDate' AND {$endDate}"
+            'raw' => "work_date BETWEEN '{$startDate}' AND '{$endDate}'"
         ], "sum(worked_time) as sum");
 
         return $result->fetch_assoc()['sum'];
